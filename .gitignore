@@ -16,10 +16,13 @@
 # debug
 debug
 
+# .DS_Store
+*.DS_Store
+
 # Static artifacts
 /assets/node_modules
 /assets/dist
 /assets/yarn-error.log
 
-# .DS_Store
-*.DS_Store
+# mysql volume
+/mysql/data/

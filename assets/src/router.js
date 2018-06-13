@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './components/home.vue'
-import Todos from './components/todos.vue'
-import Todo from './components/todo.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './components/home.vue';
+import Todos from './components/todos.vue';
+import Todo from './components/todo.vue';
 
 Vue.use(Router);
 
@@ -11,17 +11,17 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
     },
     {
-      path: '/todo',
+      path: '/todos',
       name: 'Todos',
-      component: Todos
+      component: Todos,
     },
     {
       path: '/todo/:id',
       name: 'Todo',
-      component: Todo
+      component: Todo,
     },
-  ]
+  ],
 });

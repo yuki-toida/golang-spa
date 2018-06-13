@@ -1,13 +1,13 @@
 {
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
-  },
+  "extends": "airbnb",
   "env": {
     "browser": true
   },
   "rules": {
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": true,
+      "optionalDependencies": false
+    }],    
     "no-console": "off",
     "no-new": "off",
     "max-len": 0

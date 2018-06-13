@@ -1,17 +1,32 @@
 <template>
   <div>
     <label>
-      add todo
-      <input type="text" v-model="todoName" v-on:keyup.enter="add" placeholder="enter">
+      <input type="text" v-model="todoName" placeholder="todo">
+      <button v-on:click="create">追加</button>
     </label>
-    <ul v-if="todos.length">
-      <li v-for="todo in todos" v-bind:key="todo.ID">
-        <router-link v-bind:to="{ name: 'Todo', params: { id: todo.ID }}">
-          {{ todo.ID }}:{{ todo.Name }}
-        </router-link>
-      </li>
-    </ul>
-    <p v-else>No todo</p>
+    <table v-if="todos.length" border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>CreatedAt</th>
+          <th>UpdatedAt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="todo in todos" v-bind:key="todo.ID">
+          <th>
+            <router-link v-bind:to="{ name: 'Todo', params: { id: todo.ID }}">
+              {{ todo.ID }}
+            </router-link>
+          </th>
+          <th>{{ todo.Name }}</th>
+          <th>{{ todo.CreatedAt }}</th>
+          <th>{{ todo.UpdatedAt }}</th>
+        </tr>
+      </tbody>
+    </table>
+    <p v-else>No todos</p>
   </div>
 </template>
 
@@ -19,7 +34,7 @@
 import http from '../module/http';
 
 export default {
-  mounted: function() {
+  created: function() {
     http.get('/todo').then(res => this.todos = res.data);
   },
   data: function() {
@@ -29,8 +44,8 @@ export default {
     }
   },
   methods: {
-    add: function() {
-      if (this.todoName) {        
+    create: function() {
+      if (this.todoName) {
         http.post('/todo', {name: this.todoName}).then(res => {
           console.log(res);
           this.todos = res.data;

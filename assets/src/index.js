@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import app from './app.vue'
-import router from './router'
+import Vue from 'vue';
+import app from './app.vue';
+import router from './router';
 
 new Vue({
   el: '#app',
-  router: router,
+  router,
   components: { app },
-  render: h => h(app)
+  render: h => h(app),
 });
